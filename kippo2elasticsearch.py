@@ -20,7 +20,7 @@ mysql_db = 'database'
 es_host = '127.0.0.1'
 es_port = 9200
 es_index = 'index'  # suggested: kippo
-es_type = 'type'  # suggested: auth
+es_type = 'type'  # suggested: kippo
 
 # We need this, otherwise pony returns an error during the SELECT because it enforces a limit
 pony.options.MAX_FETCH_COUNT = 999999
