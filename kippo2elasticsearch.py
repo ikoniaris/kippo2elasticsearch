@@ -49,7 +49,15 @@ kippo_mapping = {
     },
     "ip": {
         "type": "string",
-        "index": "not_analyzed"
+        "index": "not_analyzed",
+        "fields": {
+            "ipv4": {
+                "type": "ip",
+            }
+        }
+    },
+    "log_type": {
+        "type": "string"
     },
     "password": {
         "type": "string",
@@ -64,7 +72,7 @@ kippo_mapping = {
         "index": "not_analyzed"
     },
     "success": {
-        "type": "long"
+        "type": "boolean"
     },
     "timestamp": {
         "type": "date",
@@ -86,6 +94,7 @@ es.indices.put_mapping(es_type, {'properties': kippo_mapping}, [es_index])
 for row in rows:
     row_dict = collections.OrderedDict()
     row_dict['id'] = row[0]
+    row_dict['log_type'] = "login_attempt"
     row_dict['session'] = row[1]
     row_dict['success'] = row[2]
     row_dict['username'] = row[3]
